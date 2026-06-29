@@ -1,0 +1,9 @@
+##EXPENSE.csv
+
+" Date,Category,Amount,Description "
+
+
+•Date → When the expense was made.
+•Category → Type of expense (Food, Travel, Shopping, etc.).
+•Amount → Money spent.
+•Description → A short note about the expense.
