@@ -1,0 +1,46 @@
+      *****PSEUDOCODE*****
+
+
+STEP 1 : START
+
+STEP 2 : WHILE True
+
+STEP 3 : Display Menu
+
+1. Add Expense
+2. View Expenses
+3. Search Expense
+4. Delete Expense
+5. Total Expense
+6. Monthly Report
+7. Exit
+
+STEP 4 : Read Choice
+
+ STEP 4.1 : IF Choice = 1
+                   Add Expense 
+
+ STEP 4.2  : ELSE IF Choice = 2
+                   View Expenses
+
+ STEP 4.3 : ELSE IF Choice = 3
+                    Search Expense
+
+ STEP 4.4  :  ELSE IF Choice = 4
+                    Delete Expense
+
+ STEP 4.5 : ELSE IF Choice = 5
+                    Calculate Total
+
+ STEP 4.6 :  ELSE IF Choice = 6
+                    Monthly Report
+
+ STEP 4.7 :  ELSE IF Choice = 7
+                       EXIT
+
+STEP 5 : ELSE
+                Display Invalid Choice
+
+STEP 6 : END WHILE
+
+STEP 7 : STOP
