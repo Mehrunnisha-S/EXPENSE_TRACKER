@@ -1,0 +1,52 @@
+***ALGORITHM***
+
+STEP 1: Start
+
+STEP 2: Display Menu
+
+                 1. Add Expense
+                 2. View Expenses
+                 3. Search Expense
+                 4. Delete Expense
+                 5. Total Expense
+                 6. Monthly Report
+                 7. Exit 
+
+STEP 3 : Read User Choice
+
+STEP 4 : If Choice = 1
+
+•Read Date
+•Read Category
+•Read Amount
+•Read Description
+•Save into CSV file
+
+STEP  5 : If Choice = 2
+
+         Read all records
+         Display them
+
+STEP  6 : If Choice = 3
+
+         Read Category
+         Display matching expenses
+
+STEP  7 : If Choice = 4
+
+          Read expense number
+          Delete selected record
+
+STEP  8 : If Choice = 5
+
+          Calculate total amount
+          Display total
+
+STEP  9 : If Choice = 6
+
+          Display monthly expenses
+
+STEP 10 : If Choice = 7
+                 Exit…
+
+STEP 11 : Stop
