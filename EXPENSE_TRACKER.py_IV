@@ -1,0 +1,172 @@
+ 2.EXPENSE_TRACKER.PY
+
+import csv
+import os
+
+FILE = "expenses.csv"
+
+
+def create_file():
+    if not os.path.exists(FILE):
+        with open(FILE, "w", newline="") as file:
+            writer = csv.writer(file)
+            writer.writerow(["Date", "Category", "Amount", "Description"])
+
+
+create_file()
+
+
+def add_expense():
+    print("\nADD EXPENSE")
+
+    date = input("Enter Date (DD-MM-YYYY): ")
+    category = input("Enter Category: ")
+
+    while True:
+        try:
+            amount = float(input("Enter Amount (₹): "))
+            break
+        except ValueError:
+            print("Invalid Amount!")
+
+    description = input("Enter Description: ")
+
+    with open(FILE, "a", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow([date, category, amount, description])
+
+    print("\nExpense Added Successfully!")
+
+
+def view_expenses():
+
+    with open(FILE, "r") as file:
+
+        reader = list(csv.reader(file))
+
+        if len(reader) <= 1:
+            print("\nNo Expenses Found.")
+            return
+
+        print("\n" + "=" * 72)
+        print("{:<15}{:<15}{:<15}{:<20}".format(
+            "Date", "Category", "Amount", "Description"))
+        print("=" * 72)
+
+        for row in reader[1:]:
+            print("{:<15}{:<15}₹{:<14}{:<20}".format(
+                row[0], row[1], row[2], row[3]))
+
+        print("=" * 72)
+
+
+def search_expense():
+
+    category = input("Enter Category to Search: ")
+
+    found = False
+
+    with open(FILE, "r") as file:
+
+        reader = csv.reader(file)
+
+        next(reader)
+
+        print("\n" + "=" * 72)
+        print("{:<15}{:<15}{:<15}{:<20}".format(
+            "Date", "Category", "Amount", "Description"))
+        print("=" * 72)
+
+        for row in reader:
+
+            if row[1].lower() == category.lower():
+
+                found = True
+
+                print("{:<15}{:<15}₹{:<14}{:<20}".format(
+                    row[0], row[1], row[2], row[3]))
+
+    if not found:
+        print("No Expense Found.")
+
+    print("=" * 72)
+
+
+def delete_expense():
+
+    with open(FILE, "r") as file:
+        rows = list(csv.reader(file))
+
+    if len(rows) <= 1:
+        print("No Expense Found.")
+        return
+
+    print("\nExpenses\n")
+
+    for i, row in enumerate(rows[1:], start=1):
+        print(i, row)
+
+    try:
+        num = int(input("\nEnter Expense Number to Delete: "))
+
+        if num < 1 or num > len(rows) - 1:
+            print("Invalid Number")
+            return
+
+        rows.pop(num)
+
+        with open(FILE, "w", newline="") as file:
+            writer = csv.writer(file)
+            writer.writerows(rows)
+
+        print("Expense Deleted Successfully!")
+
+    except ValueError:
+        print("Invalid Input!")
+
+
+def total_expense():
+
+    total = 0
+
+    with open(FILE, "r") as file:
+
+        reader = csv.reader(file)
+
+        next(reader)
+
+        for row in reader:
+            total += float(row[2])
+
+    print("\nTotal Expense = ₹", total)
+
+
+def monthly_report():
+
+    month = input("Enter Month (MM): ")
+
+    found = False
+
+    with open(FILE, "r") as file:
+
+        reader = csv.reader(file)
+
+        next(reader)
+
+        print("\n" + "=" * 72)
+        print("{:<15}{:<15}{:<15}{:<20}".format(
+            "Date", "Category", "Amount", "Description"))
+        print("=" * 72)
+
+        for row in reader:
+
+            if row[0][3:5] == month:
+
+                found = True
+
+                print("{:<15}{:<15}₹{:<14}{:<20}".format(
+                    row[0], row[1], row[2], row[3]))
+
+    if not found:
+        print("No Expenses Found.")
+
